@@ -23,18 +23,24 @@ From: debian:jessie-slim
     && rm -rf /var/lib/apt/lists/*
 
     # install anaconda
-    if [ ! -d /usr/local/anaconda ]; then
+    if [ ! -d /usr/local/bin/anaconda ]; then
          wget https://repo.continuum.io/archive/Anaconda3-2019.03-MacOSX-x86_64.sh \
             -O ~/anaconda.sh && \
          bash ~/anaconda.sh -b -p /usr/local/bin/anaconda && \
          rm ~/anaconda.sh
     fi
+    
+    # add bioconda channels
+    conda config --add channels defaults
+    conda config --add channels conda-forge
+    conda config --add channels bioconda
+    conda update conda
+    conda clean --all --yes
+    
     # set anaconda path
-    export PATH="/usr/local/bin/anaconda/bin:$PATH"
+    #export PATH="/usr/local/bin/anaconda/bin:$PATH"
     # install bulk of bioinformatic tools using conda 
-    conda create -n compute python=3
-    source /usr/local/bin/anaconda/bin/activate compute
-    conda install -c bioconda rgi
+    conda create -n compute python=3 rgi
     
     #conda install numpy scipy
     conda clean --tarballs
