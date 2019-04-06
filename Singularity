@@ -25,9 +25,9 @@ From: debian:jessie-slim
     # install anaconda
     if [ ! -d /usr/local/bin/anaconda ]; then
          wget https://repo.continuum.io/archive/Anaconda3-2019.03-MacOSX-x86_64.sh \
-            -O ~/anaconda.sh && \
-         bash ~/anaconda.sh -b -p /usr/local/bin/anaconda && \
-         rm ~/anaconda.sh
+            -O /usr/local/anaconda.sh && \
+         bash /usr/local/anaconda.sh -b -p /usr/local/bin/anaconda && \
+         rm /usr/local/anaconda.sh
     fi
     
     # add bioconda channels
