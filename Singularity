@@ -4,9 +4,8 @@ From: debian:jessie-slim
 #Includes rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib resistomeanalyzer, rarefactionanalyzer, SNPfinder
 
 %environment
-    #PATH="/usr/local/bin/anaconda/bin:$PATH"
-
-    #source /usr/local/bin/anaconda/bin/activate compute
+    export PATH="/usr/local/bin/anaconda/bin:$PATH"
+    . /usr/local/bin/anaconda/bin/activate compute
 
 %post
     ## Jave install doesn't work, but can load java module from summit
