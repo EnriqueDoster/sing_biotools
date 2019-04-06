@@ -5,7 +5,8 @@ From: debian:jessie-slim
 
 %environment
     #PATH="/usr/local/bin/anaconda/bin:$PATH"
-    source /usr/local/bin/anaconda/bin/activate compute
+
+    #source /usr/local/bin/anaconda/bin/activate compute
 
 %post
     ## Jave install doesn't work, but can load java module from summit
@@ -23,14 +24,13 @@ From: debian:jessie-slim
 
     # install anaconda
     if [ ! -d /usr/local/anaconda ]; then
-         wget https://repo.continuum.io/miniconda/Miniconda2-4.3.14-Linux-x86_64.sh \
+         wget https://repo.continuum.io/archive/Anaconda3-2019.03-MacOSX-x86_64.sh \
             -O ~/anaconda.sh && \
          bash ~/anaconda.sh -b -p /usr/local/bin/anaconda && \
          rm ~/anaconda.sh
     fi
     # set anaconda path
     export PATH="/usr/local/bin/anaconda/bin:$PATH"
-
     # install bulk of bioinformatic tools using conda 
     conda create -n compute python=3
     source /usr/local/bin/anaconda/bin/activate compute
