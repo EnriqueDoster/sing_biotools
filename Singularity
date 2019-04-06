@@ -4,8 +4,8 @@ From: debian:jessie-slim
 #Includes rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib resistomeanalyzer, rarefactionanalyzer, SNPfinder
 
 %environment
-    PATH="/usr/local/bin/anaconda/bin:$PATH"
-    . /usr/local/bin/anaconda/bin/activate compute
+    #PATH="/usr/local/bin/anaconda/bin:$PATH"
+    source /usr/local/bin/anaconda/bin/activate compute
 
 %post
     ## Jave install doesn't work, but can load java module from summit
@@ -33,7 +33,7 @@ From: debian:jessie-slim
 
     # install bulk of bioinformatic tools using conda 
     conda create -n compute python=3
-    . /usr/local/bin/anaconda/bin/activate compute
+    source /usr/local/bin/anaconda/bin/activate compute
     conda install -c bioconda rgi
     
     #conda install numpy scipy
