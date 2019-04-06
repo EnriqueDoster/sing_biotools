@@ -5,7 +5,7 @@ From: debian:jessie-slim
 
 %environment
     PATH="/usr/local/bin/anaconda/bin:$PATH"
-    . /usr/local/bin/anaconda/bin/activate compute
+    . activate compute
 
 %post
     ## Jave install doesn't work, but can load java module from summit
@@ -20,14 +20,6 @@ From: debian:jessie-slim
     gcc g++ gfortran libblas-dev liblapack-dev dos2unix tabix \
     r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
-
-    # install debian packages
-    #apt-get update
-    #apt-get install -y eatmydata
-    #eatmydata apt-get install -y wget bzip2 \
-    #  ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 \
-    #  git git-annex-standalone
-    #apt-get clean
 
     # install anaconda
     if [ ! -d /usr/local/anaconda ]; then
