@@ -23,12 +23,14 @@ From: debian:jessie-slim
     && rm -rf /var/lib/apt/lists/*
 
     # install anaconda
-    if [ ! -d /usr/local/bin/anaconda ]; then
-         wget https://repo.continuum.io/archive/Anaconda3-2019.03-MacOSX-x86_64.sh \
-            -O /usr/local/anaconda.sh && \
-         bash /usr/local/anaconda.sh -b -p /usr/local/bin/anaconda && \
-         rm /usr/local/anaconda.sh
+    if [ ! -d /usr/local/anaconda ]; then
+         wget https://repo.continuum.io/miniconda/Miniconda2-4.3.14-Linux-x86_64.sh \
+            -O ~/anaconda.sh && \
+         bash ~/anaconda.sh -b -p /usr/local/bin/anaconda && \
+         rm ~/anaconda.sh
     fi
+    # set anaconda path
+    export PATH="/usr/local/bin/anaconda/bin:$PATH"
     
     # add bioconda channels
     conda config --add channels defaults
