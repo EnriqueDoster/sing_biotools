@@ -5,7 +5,7 @@ From: debian:jessie-slim
 
 %environment
     PATH="/usr/local/bin/anaconda/bin:$PATH"
-    . activate compute
+    . /usr/local/bin/anaconda/bin/activate compute
 
 %post
     ## Jave install doesn't work, but can load java module from summit
@@ -33,6 +33,7 @@ From: debian:jessie-slim
 
     # install bulk of bioinformatic tools using conda 
     conda create -n compute python=3
+    . /usr/local/bin/anaconda/bin/activate compute
     conda install -c bioconda rgi
     
     #conda install numpy scipy
@@ -46,7 +47,6 @@ From: debian:jessie-slim
     
     
 %runscript
-    echo "Now inside Singularity container woah..."
-    exec /bin/bash    
-   
+
+
 %test
