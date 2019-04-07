@@ -4,12 +4,12 @@ From: debian:jessie-slim
 #Includes rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib resistomeanalyzer, rarefactionanalyzer, SNPfinder
 
 %environment
-    echo 'export PATH=c/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
     
 %post
     ## Jave install doesn't work, but can load java module from summit
     apt update 
-    apt install software-properties-common
+    apt install -y software-properties-common
     add-apt-repository ppa:deadsnakes/ppa
     apt update \
     && apt install -y --no-install-recommends \
