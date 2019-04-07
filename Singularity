@@ -14,42 +14,28 @@ From: debian:jessie-slim
     git make automake autoconf wget unzip sed \
     zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
     libglib2.0-0 libxext6 libsm6 libxrender1 \
-    python3-pip python3-docopt python3-pytest python-dev python3-dev\
+    python3.6 python3-pip python3-docopt python3-pytest python-dev python3-dev\
     libssl-dev zlib1g-dev fonts-texgyre \
     gcc g++ gfortran libblas-dev liblapack-dev dos2unix tabix \
     r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
 
-    # install anaconda
-    if [ ! -d /usr/local/anaconda ]; then
-         wget https://repo.continuum.io/miniconda/Miniconda2-4.3.14-Linux-x86_64.sh \
-            -O ~/anaconda.sh && \
-         bash ~/anaconda.sh -b -p /usr/local/bin/anaconda && \
-         rm ~/anaconda.sh
-    fi
-    # set anaconda path
-    echo 'export PATH=/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
-    export PATH=/usr/local/bin/anaconda/bin:${PATH}
-    # add bioconda channels
-    conda config --add channels defaults
-    conda config --add channels conda-forge
-    conda config --add channels bioconda
-    conda update conda
-    conda clean --all --yes
+    python3 -m pip install six
+    python3 -m pip install biopython
+    python3 -m pip install filetype
+    python3 -m pip install pytest
+    python3 -m pip install mock
+    python3 -m pip install pandas
+    python3 -m pip install matplotlib
+    python3 -m pip install seaborn
+    python3 -m pip install pyfaidx
+    python3 -m pip install pyahocorasick
     
-    # install bulk of bioinformatic tools using conda 
-    conda create -n compute python=3 rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib ncurses    
-        
-    
-    #conda install numpy scipy
-    conda clean --tarballs
+    git clone https://github.com/arpcard/rgi.git
+    cd rgi
+    python3 -m pip install .
 
-    # make /data and /scripts so we can mount it to access external resources
-    if [ ! -d /data ]; then mkdir /data; fi
-    if [ ! -d /scripts ]; then mkdir /scripts; fi
-    
-    . /usr/local/bin/anaconda/bin/activate compute
-    
+
 %runscript
 
 
