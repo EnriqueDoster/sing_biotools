@@ -5,7 +5,6 @@ From: debian:jessie-slim
 
 %environment
     echo 'export PATH=c/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
-    . /usr/local/bin/anaconda/bin/activate compute
     
 %post
     ## Jave install doesn't work, but can load java module from summit
@@ -49,7 +48,6 @@ From: debian:jessie-slim
     if [ ! -d /scripts ]; then mkdir /scripts; fi
     
     . /usr/local/bin/anaconda/bin/activate compute
-
     
 %runscript
 
