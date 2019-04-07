@@ -8,8 +8,8 @@ From: debian:jessie-slim
     
 %post
     ## Jave install doesn't work, but can load java module from summit
-    apt-get install software-properties-common
-    apt-get update 
+    apt update 
+    apt install software-properties-common
     add-apt-repository ppa:deadsnakes/ppa
     apt update \
     && apt install -y --no-install-recommends \
