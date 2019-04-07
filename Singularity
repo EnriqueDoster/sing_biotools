@@ -8,6 +8,7 @@ From: debian:jessie-slim
     
 %post
     ## Jave install doesn't work, but can load java module from summit
+    add-apt-repository ppa:deadsnakes/ppa
     apt update \
     && apt install -y --no-install-recommends \
     build-essential ca-certificates sudo \
