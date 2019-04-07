@@ -51,7 +51,6 @@ From: debian:jessie-slim
     . /usr/local/bin/anaconda/bin/activate compute
 
     
-    
 %runscript
 
 
