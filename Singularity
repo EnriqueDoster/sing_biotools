@@ -4,9 +4,9 @@ From: debian:jessie-slim
 #Includes rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib resistomeanalyzer, rarefactionanalyzer, SNPfinder
 
 %environment
-    export PATH="/usr/local/bin/anaconda/bin:$PATH"
+    echo 'export PATH=c/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
     . /usr/local/bin/anaconda/bin/activate compute
-
+    
 %post
     ## Jave install doesn't work, but can load java module from summit
     apt update \
@@ -29,8 +29,7 @@ From: debian:jessie-slim
          rm ~/anaconda.sh
     fi
     # set anaconda path
-    export PATH="/usr/local/bin/anaconda/bin:$PATH"
-    
+    echo 'export PATH=/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
     # add bioconda channels
     conda config --add channels defaults
     conda config --add channels conda-forge
@@ -38,10 +37,9 @@ From: debian:jessie-slim
     conda update conda
     conda clean --all --yes
     
-    # set anaconda path
-    #export PATH="/usr/local/bin/anaconda/bin:$PATH"
     # install bulk of bioinformatic tools using conda 
-    conda create -n compute python=3 rgi
+    conda create -n compute python=3 rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib ncurses    
+        
     
     #conda install numpy scipy
     conda clean --tarballs
@@ -49,7 +47,8 @@ From: debian:jessie-slim
     # make /data and /scripts so we can mount it to access external resources
     if [ ! -d /data ]; then mkdir /data; fi
     if [ ! -d /scripts ]; then mkdir /scripts; fi
-
+    
+    . /usr/local/bin/anaconda/bin/activate compute
 
     
     
