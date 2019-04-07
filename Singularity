@@ -29,6 +29,7 @@ From: debian:jessie-slim
     fi
     # set anaconda path
     echo 'export PATH=/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
+    export PATH=/usr/local/bin/anaconda/bin:${PATH}
     # add bioconda channels
     conda config --add channels defaults
     conda config --add channels conda-forge
