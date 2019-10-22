@@ -34,7 +34,7 @@ From: debian:jessie-slim
     . /usr/local/bin/activate AmrPlusPlus_qiime2_env
 
     # install bulk of bioinformatic tools using conda
-    conda install biopython picrust
+    conda install biopython picrust2
     
     # Run additional command for picrust
     download_picrust_files.py
