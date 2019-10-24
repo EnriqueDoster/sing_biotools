@@ -26,6 +26,7 @@ From: debian:jessie-slim
     conda config --add channels defaults
     conda config --add channels conda-forge
     conda config --add channels bioconda
+    conda config --add channels gavinmdouglas
 
     #Download file for qiime2 installation
     wget https://data.qiime2.org/distro/core/qiime2-2019.7-py36-linux-conda.yml
@@ -34,7 +35,7 @@ From: debian:jessie-slim
     . /usr/local/bin/activate AmrPlusPlus_qiime2_env
 
     # install bulk of bioinformatic tools using conda
-    conda install q2-picrust2=2019.7 -c conda-forge -c bioconda -c gavinmdouglas
+    conda install q2-picrust2=2019.7
     
     # Run additional command for picrust
     download_picrust_files.py
