@@ -55,14 +55,8 @@ From: debian:jessie-slim
     chmod -R 777 /usr/local/
 
     # install perl modules
-    perl -MCPAN -e shell
-    install File::Slurp
-    install URI::Escape
-    install CPAN
-    install Sgtty
-    install Term::ReadKey
-    exit
-
+    perl -MCPAN -e 'install File::Slurp; install URI::Escape; install CPAN; install Sgtty; install Term::ReadKey'
+    
 
     
 %test
