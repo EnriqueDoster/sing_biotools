@@ -24,6 +24,23 @@ From: debian:jessie-slim
     cd kSNP3.021_Linux_package/kSNP3
     echo 'export PATH=$PATH:/usr/local/bin/kSNP3.021_Linux_package/kSNP3/' >> $SINGULARITY_ENVIRONMENT
 
+    #Installing Anaconda 2 and Conda 4.5.11
+    wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
+    sh Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
+
+    # add bioconda channels
+    conda config --add channels defaults
+    conda config --add channels conda-forge
+    conda config --add channels bioconda
+    # channel for java v8
+    conda config --add channels cyclus
+    # channel for Lyveset
+    conda config --add channels hcc
+    
+
+    # install bulk of bioinformatic tools using conda
+    conda install zsh java-jdk lyve-set
+
     
 %test
     #which bwa
