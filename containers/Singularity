@@ -53,8 +53,9 @@ From: debian:jessie-slim
     cd /usr/local/bin/
     wget https://sourceforge.net/projects/ksnp/files/kSNP3.021_Linux_package.zip
     unzip kSNP3.021_Linux_package.zip
-    cd kSNP3.021_Linux_package/kSNP3
-    echo 'export PATH=$PATH:/usr/local/bin/kSNP3.021_Linux_package/kSNP3/' >> $SINGULARITY_ENVIRONMENT
+    # kSNP by default looks for the it's tools within /usr/local/kSNP3/
+    mv /usr/local/bin/kSNP3.021_Linux_package/kSNP3 /usr/local/kSNP3
+    echo 'export PATH=$PATH:/usr/local/kSNP3/' >> $SINGULARITY_ENVIRONMENT
 
 
     # Make sure all the tools have the right permissions to use the tools
