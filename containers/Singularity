@@ -59,9 +59,5 @@ From: debian:jessie-slim
     echo 'export PATH=$PATH:/usr/local/kSNP3/' >> $SINGULARITY_ENVIRONMENT
 
 
-    # Make sure all the tools have the right permissions to use the tools
-    chmod -R 777 /usr/local/
-
-
 %test
-    which bwa
+
