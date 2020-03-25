@@ -1,7 +1,7 @@
 Bootstrap: docker
 From: debian:jessie-slim
 
-#Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
+#Includes kSNP3 and LYVEset
 
 %environment
     export LC_ALL=C
@@ -56,7 +56,7 @@ From: debian:jessie-slim
     # kSNP by default looks for the it's tools within /usr/local/kSNP3/
     # Move the downloaded folder to that location
     mv /usr/local/bin/kSNP3.021_Linux_package/kSNP3 /usr/local/kSNP3
-    echo 'export PATH=$PATH:/usr/local/kSNP3/' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=/usr/local/kSNP3/:$PATH' >> $SINGULARITY_ENVIRONMENT
 
 
 %test
