@@ -1,7 +1,7 @@
 Bootstrap: docker
 From: debian:jessie-slim
 
-#Includes kSNP3 and LYVEset
+#Includes kSNP3 and LYVEset (couldn't get CFSAN-snp to work on this container)
 
 %environment
     export LC_ALL=C
@@ -34,7 +34,7 @@ From: debian:jessie-slim
     conda config --add channels hcc
 
     # install bulk of bioinformatic tools using conda
-    conda install smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools java-jdk snp-pipeline lyve-set
+    conda install smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools java-jdk lyve-set
 
     ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
     git clone https://github.com/EnriqueDoster/sing_biotools.git
