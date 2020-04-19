@@ -66,4 +66,4 @@ From: debian:jessie-slim
 
 
 %test
-    which bwa
+
